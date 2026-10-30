@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<title>R.M.COM — Play & Challenge</title>
+<style>
+:root{--bg:#0b1220;--panel:#152238;--panel2:#20314d;--text:#f4f7ff;--muted:#afbdd1;--mint:#67e8c2;--blue:#82aaff;--line:#ffffff1c}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 0%,#234367 0,#0b1220 50%);font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;color:var(--text);padding:16px;display:flex;justify-content:center}
+.app{width:min(100%,760px)}header{text-align:center;padding:12px 0 20px}.logo{margin:auto;width:64px;height:64px;border-radius:21px;background:linear-gradient(135deg,var(--mint),var(--blue));display:grid;place-items:center;color:#091424;font-weight:950;font-size:22px;box-shadow:0 12px 30px #0005}h1{font-size:30px;letter-spacing:1px;margin:10px 0 2px}header p{margin:0;color:var(--muted)}.card{background:#152238ed;border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 16px 45px #0004;margin-bottom:14px}.hidden{display:none!important}.eyebrow{color:var(--mint);font-size:12px;font-weight:900;letter-spacing:1.5px}.hero{font-size:24px;line-height:1.4;margin:8px 0}.muted{color:var(--muted);font-size:14px;line-height:1.6}.field{width:100%;padding:13px;border:1px solid var(--line);border-radius:12px;background:#0d192b;color:white;font-size:16px;margin:8px 0}.btn{border:0;border-radius:13px;padding:13px 16px;font-weight:850;font-size:15px;cursor:pointer}.primary{background:var(--mint);color:#081522}.secondary{background:#ffffff15;color:var(--text)}.wide{width:100%;margin-top:10px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}.game{background:linear-gradient(145deg,#223651,#17263d);border:1px solid var(--line);border-radius:17px;padding:16px;min-height:142px;cursor:pointer;color:var(--text);text-align:left}.game:active{transform:scale(.99)}.emoji{font-size:28px}.game strong{display:block;margin:8px 0 3px;font-size:16px}.game small{color:var(--muted);font-size:12px}.top{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:13px}.track{height:7px;background:#ffffff18;border-radius:20px;margin:12px 0 18px;overflow:hidden}.bar{height:100%;background:linear-gradient(90deg,var(--mint),var(--blue));width:0}.question{font-size:21px;line-height:1.5;margin:12px 0}.answers{display:grid;gap:9px}.answer{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:13px;text-align:left;font-size:15px}.answer.correct{border-color:var(--mint);background:#17443e}.answer.wrong{border-color:#ff9caa;background:#482b39}.answer:disabled{opacity:1}.note{min-height:35px;color:var(--muted);font-size:13px;line-height:1.5}.actions{display:flex;gap:9px}.actions button{flex:1}.big{font-size:34px;font-weight:900;color:var(--mint);text-align:center;margin:15px}.memory{font-size:30px;letter-spacing:5px;text-align:center;padding:28px 8px;background:#0d192b;border-radius:15px;margin:15px 0}.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0}.tile{padding:20px 5px;font-size:23px;font-weight:850;background:var(--panel2);border:1px solid var(--line);border-radius:13px;color:white}.tile:disabled{opacity:.55}.rowitem{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:11px 0;font-size:14px}.footer{text-align:center;color:#8190a8;font-size:12px;padding:8px}.pill{display:inline-block;border:1px solid var(--line);border-radius:30px;padding:5px 10px;color:var(--muted);font-size:12px}
+@media(max-width:430px){.grid{gap:9px}.game{padding:13px;min-height:132px}.hero{font-size:21px}.card{padding:17px}}
+</style></head>
+<body><main class="app">
+<header><div class="logo">RM</div><h1>R.M.COM</h1><p>Play • Think • Challenge | খেলো • ভাবো • চ্যালেঞ্জ নাও</p></header>
+
+<section class="card" id="home">
+ <div class="eyebrow">WELCOME / স্বাগতম</div><h2 class="hero">Your Brain. Your Challenge.<br>তোমার বুদ্ধি, তোমার চ্যালেঞ্জ!</h2>
+ <p class="muted">Choose a game and have fun. একটি গেম বেছে নিয়ে খেলা শুরু করো।</p>
+ <label class="muted" for="player">Player Name / খেলোয়াড়ের নাম</label>
+ <input class="field" id="player" maxlength="18" placeholder="Enter your name / নাম লেখো">
+ <div class="grid">
+  <button class="game" onclick="startIQ()"><span class="emoji">🧠</span><strong>IQ Test</strong><small>যুক্তি ও বুদ্ধির পরীক্ষা · ১০ প্রশ্ন</small></button>
+  <button class="game" onclick="startMemory()"><span class="emoji">🧩</span><strong>Memory Match</strong><small>স্মৃতিশক্তির খেলা · মনে রাখো</small></button>
+  <button class="game" onclick="startNumber()"><span class="emoji">🔢</span><strong>Number Challenge</strong><small>সংখ্যার ধাঁধা · দ্রুত উত্তর দাও</small></button>
+  <button class="game" onclick="startPattern()"><span class="emoji">🔍</span><strong>Pattern Puzzle</strong><small>ধারার পরের সংখ্যা খুঁজে বের করো</small></button>
+ </div>
+ <button class="btn secondary wide" onclick="leaderboard()">🏆 Leaderboard / স্কোরবোর্ড</button>
+ <p class="muted" style="font-size:12px">Free demo version · ফ্রি ডেমো ভার্সন</p>
+</section>
+
+<section class="card hidden" id="play">
+ <div class="top"><span id="gameName">IQ Test</span><span id="progress">1 / 10</span><span id="clock">00:00</span></div>
+ <div class="track"><div class="bar" id="bar"></div></div>
+ <div class="eyebrow" id="category">LOGIC / যুক্তি</div>
+ <h2 class="question" id="prompt"></h2>
+ <div id="playArea"></div>
+ <p class="note" id="note" aria-live="polite"></p>
+ <div class="actions"><button class="btn secondary" onclick="goHome()">Home / হোম</button><button class="btn primary" id="next" onclick="nextStep()" disabled>Next / পরেরটি</button></div>
+</section>
+
+<section class="card hidden" id="result">
+ <div class="eyebrow">RESULT / ফলাফল</div><h2 class="hero" id="resultTitle">Well done!</h2><div class="big" id="resultScore">0</div><p class="muted" id="resultDetail"></p>
+ <button class="btn primary wide" onclick="goHome()">Play More / আরও খেলো</button>
+ <button class="btn secondary wide" onclick="leaderboard()">Leaderboard / স্কোরবোর্ড</button>
+</section>
+
+<section class="card hidden" id="board">
+ <div class="eyebrow">TOP SCORES / সেরা স্কোর</div><h2 class="hero">🏆 Leaderboard</h2><div id="boardRows"></div>
+ <p class="muted" style="font-size:12px">Scores are saved only in this browser on this device. স্কোর শুধু এই ডিভাইসের ব্রাউজারে সেভ হয়।</p>
+ <button class="btn secondary wide" onclick="goHome()">Home / হোম</button>
+</section>
+<div class="footer">© R.M.COM · Keep learning, keep playing.</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const iq=[
+["সংখ্যার ধারা","২, ৪, ৮, ১৬, এরপর কোন সংখ্যা?",["২০","২৪","৩২","৩০"],2,"প্রতিটি সংখ্যা দ্বিগুণ হচ্ছে।"],
+["গণিত","১২-এর অর্ধেকের সঙ্গে ৫ যোগ করলে কত?",["৬","১০","১১","১৭"],2,"১২-এর অর্ধেক ৬; ৬ + ৫ = ১১।"],
+["ভিন্নটি খুঁজে বের করো","কোনটি অন্যগুলোর থেকে আলাদা?",["আম","কলা","গাজর","আপেল"],2,"গাজর সবজি; বাকিগুলো ফল।"],
+["শব্দের সম্পর্ক","পাখি : আকাশ :: মাছ : ?",["গাছ","পানি","মাটি","ঘর"],1,"মাছ পানিতে থাকে।"],
+["সংখ্যার ধারা","১, ৪, ৯, ১৬, এরপর?",["২০","২৪","২৫","৩৬"],2,"এগুলো বর্গসংখ্যা; এরপর ৫² = ২৫।"],
+["সময়","৩টার ২ ঘণ্টা ৩০ মিনিট পর কয়টা?",["৪:৩০","৫:৩০","৬:৩০","৫:০০"],1,"সময় হবে ৫:৩০।"],
+["যুক্তি","এক সপ্তাহে কয় দিন?",["৫","৬","৭","৮"],2,"এক সপ্তাহে ৭ দিন।"],
+["গণিত","৮ × ৭ কত?",["৫৪","৫৬","৬৪","৪৮"],1,"৮ × ৭ = ৫৬।"],
+["ধাঁধা","যত বেশি শুকায়, তত বেশি ভিজে—কী?",["সাবান","তোয়ালে","বই","বালিশ"],1,"তোয়ালে অন্য কিছু শুকাতে গিয়ে নিজে ভিজে।"],
+["সংখ্যার ধারা","২, ৫, ৮, ১১, এরপর?",["১২","১৩","১৪","১৫"],2,"প্রতি ধাপে ৩ যোগ হচ্ছে।"]
+];
+const patterns=[["৩, ৬, ১২, ২৪, ?",["৩০","৩৬","৪৮"],2],["১, ২, ৪, ৭, ১১, ?",["১৪","১৫","১৬"],2],["১০০, ৯০, ৮০, ৭০, ?",["৬০","৬৫","৫০"],0],["৪, ৯, ১৪, ১৯, ?",["২২","২৩","২৪"],2],["২, ৩, ৫, ৮, ১২, ?",["১৫","১৬","১৭"],2]];
+let mode="",items=[],idx=0,score=0,locked=false,player="Player",started=0,timer=null,seconds=0,memSequence=[],memIndex=0;
+const bn=n=>String(n).replace(/\d/g,d=>"০১২৩৪৫৬৭৮৯"[d]);
+function show(which){["home","play","result","board"].forEach(id=>$(id).classList.toggle("hidden",id!==which))}
+function getPlayer(){player=($("player").value.trim()||"Player").slice(0,18);$("player").value=player}
+function clockStart(){clearInterval(timer);started=Date.now();seconds=0;timer=setInterval(()=>{seconds=Math.floor((Date.now()-started)/1000);$("clock").textContent=fmt(seconds)},1000)}
+function fmt(s){return bn(Math.floor(s/60)).padStart(2,"০")+":"+bn(s%60).padStart(2,"০")}
+function begin(name){getPlayer();mode=name;idx=0;score=0;locked=false;clockStart();show("play");$("gameName").textContent=name;$("next").disabled=true;$("note").textContent="";$("bar").style.width="0%"}
+function startIQ(){items=iq.map((q,i)=>({q,original:i}));begin("IQ Test / বুদ্ধির পরীক্ষা");renderChoice()}
+function renderChoice(){locked=false;let q=items[idx].q;$("progress").textContent=bn(idx+1)+" / "+bn(items.length);$("bar").style.width=(idx/items.length*100)+"%";$("category").textContent=q[0];$("prompt").textContent=q[1];$("next").textContent=idx===items.length-1?"Finish / শেষ":"Next / পরেরটি";let area=$("playArea");area.innerHTML="";q[2].forEach((v,i)=>{let b=document.createElement("button");b.className="answer";b.textContent=String.fromCharCode(65+i)+". "+v;b.onclick=()=>pick(i);area.appendChild(b)});$("next").disabled=true;$("note").textContent=""}
+function pick(i){if(locked)return;locked=true;let q=items[idx].q;[...$("playArea").children].forEach((b,j)=>{b.disabled=true;if(j===q[3])b.classList.add("correct");if(j===i&&i!==q[3])b.classList.add("wrong")});if(i===q[3]){score++;$("note").textContent="Correct! সঠিক উত্তর। "+q[4]}else $("note").textContent="Not quite. "+q[4];$("next").disabled=false}
+function startPattern(){items=patterns.map(p=>({q:p}));begin("Pattern Puzzle / সংখ্যার ধারা");renderPattern()}
+function renderPattern(){locked=false;let p=items[idx].q;$("progress").textContent=bn(idx+1)+" / "+bn(items.length);$("bar").style.width=(idx/items.length*100)+"%";$("category").textContent="NUMBER PATTERN / সংখ্যার ধারা";$("prompt").textContent=p[0];$("next").textContent=idx===items.length-1?"Finish / শেষ":"Next / পরেরটি";let area=$("playArea");area.innerHTML="";p[1].forEach((v,i)=>{let b=document.createElement("button");b.className="answer";b.textContent=v;b.onclick=()=>{if(locked)return;locked=true;[...area.children].forEach((x,j)=>{x.disabled=true;if(j===p[2])x.classList.add("correct");if(j===i&&i!==p[2])x.classList.add("wrong")});if(i===p[2]){score++;$("note").textContent="Correct! সঠিক উত্তর।"}else $("note").textContent="Try again next time. সঠিক উত্তর: "+p[1][p[2]];$("next").disabled=false};area.appendChild(b)});$("next").disabled=true;$("note").textContent=""}
+function startNumber(){items=[["৯ + ৮ = ?",17],["৬ × ৭ = ?",42],["৫০ − ১৮ = ?",32],["৮১ ÷ ৯ = ?",9],["২৫ + ৩৭ = ?",62]];begin("Number Challenge / সংখ্যার চ্যালেঞ্জ");renderNumber()}
+function renderNumber(){locked=false;let q=items[idx];$("progress").textContent=bn(idx+1)+" / "+bn(items.length);$("bar").style.width=(idx/items.length*100)+"%";$("category").textContent="QUICK MATH / দ্রুত গণিত";$("prompt").textContent=q[0];$("next").textContent=idx===items.length-1?"Finish / শেষ":"Next / পরেরটি";$("playArea").innerHTML='<input class="field" id="numberInput" type="number" inputmode="numeric" placeholder="Your answer / উত্তর লিখো"><button class="btn primary wide" id="checkNumber">Check / যাচাই</button>';$("checkNumber").onclick=()=>{if(locked)return;let val=Number($("numberInput").value);if($("numberInput").value.trim()===""){$("note").textContent="উত্তর লিখে Check চাপো।";return}locked=true;if(val===q[1]){score++;$("note").textContent="Correct! সঠিক উত্তর।"}else $("note").textContent="Correct answer / সঠিক উত্তর: "+q[1];$("numberInput").disabled=true;$("checkNumber").disabled=true;$("next").disabled=false};$("next").disabled=true;$("note").textContent=""}
+function startMemory(){begin("Memory Match / স্মৃতির খেলা");memSequence=["🍎","🌙","🚗","🐯"];memIndex=0;$("progress").textContent="Memorize / মনে রাখো";$("category").textContent="MEMORY / স্মৃতিশক্তি";$("prompt").textContent="এই চারটি চিহ্ন মনে রাখো। Then tap Continue.";let area=$("playArea");area.innerHTML='<div class="memory" id="memDisplay">'+memSequence.join("　")+'</div><button class="btn primary wide" id="continueMem">Continue / এগিয়ে যাও</button>';$("continueMem").onclick=memoryQuestion;$("next").disabled=true;$("next").textContent="";$("note").textContent="চিহ্নগুলো কয়েক সেকেন্ড দেখে মনে রাখো।"}
+function memoryQuestion(){memIndex=0;let shuffled=[...memSequence].sort(()=>Math.random()-.5);$("progress").textContent="Recall / মনে করো";$("prompt").textContent="আগের চিহ্নগুলোর মধ্যে কোনটি ছিল? Which symbol did you see?";$("playArea").innerHTML="";shuffled.forEach(x=>{let b=document.createElement("button");b.className="answer";b.textContent=x;b.onclick=()=>{if(locked)return;locked=true;if(memSequence.includes(x)){score=1;b.classList.add("correct");$("note").textContent="ঠিক! চিহ্নটি মনে ছিল।"}else{b.classList.add("wrong");$("note").textContent="এই চিহ্নটি ছিল না। আবার চেষ্টা করো!"} [...$("playArea").children].forEach(z=>z.disabled=true);$("next").disabled=false;$("next").textContent="Finish / শেষ"};$("playArea").appendChild(b)});$("note").textContent="একটি সঠিক চিহ্ন বেছে নাও।"}
+function nextStep(){if(mode==="Memory Match / স্মৃতির খেলা"){finish();return}if(!locked)return;idx++;if(idx>=items.length){finish();return}if(mode==="IQ Test / বুদ্ধির পরীক্ষা")renderChoice();else if(mode==="Pattern Puzzle / সংখ্যার ধারা")renderPattern();else renderNumber()}
+function finish(){clearInterval(timer);let total=mode==="Memory Match / স্মৃতির খেলা"?1:items.length;let record={name:player,game:mode,score,total,time:seconds,date:new Date().toLocaleDateString()};let data=[];try{data=JSON.parse(localStorage.getItem("rmcom_v3_scores")||"[]")}catch(e){}data.push(record);data.sort((a,b)=>(b.score/b.total)-(a.score/a.total)||a.time-b.time);localStorage.setItem("rmcom_v3_scores",JSON.stringify(data.slice(0,50)));$("resultTitle").textContent=player+" — Well played!";$("resultScore").textContent=bn(score)+" / "+bn(total);$("resultDetail").textContent="Game: "+mode+" · Time: "+fmt(seconds)+" · Keep practising! অনুশীলন চালিয়ে যাও।";show("result")}
+function leaderboard(){let data=[];try{data=JSON.parse(localStorage.getItem("rmcom_v3_scores")||"[]")}catch(e){}let box=$("boardRows");box.innerHTML="";if(!data.length){box.textContent="No scores yet / এখনো কোনো স্কোর নেই।";}data.slice(0,15).forEach((r,i)=>{let d=document.createElement("div");d.className="rowitem";let l=document.createElement("span");l.textContent=(i+1)+". "+r.name+" · "+r.game;let v=document.createElement("strong");v.textContent=bn(r.score)+"/"+bn(r.total);d.append(l,v);box.append(d)});show("board")}
+function goHome(){clearInterval(timer);show("home")}
+</script></body></html>
